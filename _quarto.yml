@@ -21,19 +21,6 @@ book:
         - ch_9.qmd
         - ch_10.qmd
         - ch_11.qmd
-    #- part: "LinuxOS setup"
-      #chapters:
-        #- ch_13.qmd
-        #- ch_14.qmd
-        #- ch_15.qmd
-        #- ch_16.qmd
-        #- ch_17.qmd
-        #- ch_18.qmd
-        #- ch_19.qmd
-        #- ch_20.qmd
-        #- ch_21.qmd
-        #- ch_22.qmd
-        #- ch_12.qmd
     #- references.qmd
 
 bibliography: references.bib
