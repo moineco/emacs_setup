@@ -10,6 +10,16 @@
     ]
   },
   {
+    "objectID": "index.html#emacs-configuration-macosx-linuxos-emacs-30",
+    "href": "index.html#emacs-configuration-macosx-linuxos-emacs-30",
+    "title": "Emacs setup for LaTeX",
+    "section": "Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)",
+    "text": "Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)\nThis configuration is designed as a lightweight but powerful academic computing environment built on top of Emacs. It is intended to support a complete research workflow that spans note-taking, reproducible analysis, manuscript writing, and publication preparation within a single extensible system.\nThe core idea behind this setup is integration rather than fragmentation. Instead of relying on separate tools for reading, writing, coding, and referencing, this configuration brings everything into a unified environment where ideas can move seamlessly from raw notes to structured knowledge to publishable outputs.\nThe system is particularly optimized for academic research work, including LaTeX-based manuscript preparation (via AUCTeX and latexmk), interactive PDF navigation (via PDF Tools with SyncTeX) and literate knowledge management (via Org mode and Org-roam).\nOverall, this configuration is not just an editor setup but a research operating environment. It is designed to scale from small notes to full-length academic manuscripts and to remain stable, reproducible, and maintainable over long-term research projects.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
     "objectID": "ch_1.html",
     "href": "ch_1.html",
     "title": "structure",
@@ -28,6 +38,17 @@
     "crumbs": [
       ".emacs.d",
       "init.el"
+    ]
+  },
+  {
+    "objectID": "ch_11.html",
+    "href": "ch_11.html",
+    "title": "latexmkrc",
+    "section": "",
+    "text": "Place .latexmkrc in ~/.latexmkrc\n\n# Generate pdf using pdflatex (-pdf)\n$pdf_mode=1;\n\n# Use bibtex if a .bib file exists\n$bibtex_use=1;\n\n# Define command to compile with pdfsync support and nonstopmode\n$pdflatex= 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';\n\n# Continous compiling\n$preview_continuous_mode=1;\n\nThe following .latexmkrc works perfectly with Ubuntu OS while using evince as a pdf reader\n\n# ~/.latexmkrc\n\n# Generate PDF\n$pdf_mode = 1;\n\n# Use BibTeX when needed\n$bibtex_use = 1;\n\n# pdflatex command\n$pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode -file-line-error %S';\n\n# Continuous compilation (effective when latexmk is run with -pvc)\n$preview_continuous_mode = 1;\n\n# PDF viewer\n$pdf_previewer = 'evince';\n\n# Common auxiliary files to clean\n$clean_ext = 'acn acr alg aux bbl bcf blg fdb_latexmk fls glg glo gls idx ilg ind ist lof log lot out run.xml synctex.gz toc';",
+    "crumbs": [
+      ".emacs.d",
+      "latexmkrc"
     ]
   },
   {
@@ -116,27 +137,6 @@
     "crumbs": [
       "lisp",
       "init-pandoc.el"
-    ]
-  },
-  {
-    "objectID": "ch_11.html",
-    "href": "ch_11.html",
-    "title": "latexmkrc",
-    "section": "",
-    "text": "Place .latexmkrc in ~/.latexmkrc\n\n# Generate pdf using pdflatex (-pdf)\n$pdf_mode=1;\n\n# Use bibtex if a .bib file exists\n$bibtex_use=1;\n\n# Define command to compile with pdfsync support and nonstopmode\n$pdflatex= 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';\n\n# Continous compiling\n$preview_continuous_mode=1;\n\nThe following .latexmkrc works perfectly with Ubuntu OS while using evince as a pdf reader\n\n# ~/.latexmkrc\n\n# Generate PDF\n$pdf_mode = 1;\n\n# Use BibTeX when needed\n$bibtex_use = 1;\n\n# pdflatex command\n$pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode -file-line-error %S';\n\n# Continuous compilation (effective when latexmk is run with -pvc)\n$preview_continuous_mode = 1;\n\n# PDF viewer\n$pdf_previewer = 'evince';\n\n# Common auxiliary files to clean\n$clean_ext = 'acn acr alg aux bbl bcf blg fdb_latexmk fls glg glo gls idx ilg ind ist lof log lot out run.xml synctex.gz toc';",
-    "crumbs": [
-      ".emacs.d",
-      "latexmkrc"
-    ]
-  },
-  {
-    "objectID": "index.html#emacs-configuration-macosx-linuxos-emacs-30",
-    "href": "index.html#emacs-configuration-macosx-linuxos-emacs-30",
-    "title": "Emacs setup for LaTeX",
-    "section": "Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)",
-    "text": "Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)\nThis configuration is designed as a lightweight but powerful academic computing environment built on top of Emacs. It is intended to support a complete research workflow that spans note-taking, reproducible analysis, manuscript writing, and publication preparation within a single extensible system.\nThe core idea behind this setup is integration rather than fragmentation. Instead of relying on separate tools for reading, writing, coding, and referencing, this configuration brings everything into a unified environment where ideas can move seamlessly from raw notes to structured knowledge to publishable outputs.\nThe system is particularly optimized for academic research work, including LaTeX-based manuscript preparation (via AUCTeX and latexmk), interactive PDF navigation (via PDF Tools with SyncTeX) and literate knowledge management (via Org mode and Org-roam).\nOverall, this configuration is not just an editor setup but a research operating environment. It is designed to scale from small notes to full-length academic manuscripts and to remain stable, reproducible, and maintainable over long-term research projects.",
-    "crumbs": [
-      "Preface"
     ]
   }
 ]
