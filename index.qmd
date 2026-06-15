@@ -1,46 +1,17 @@
 # Preface {.unnumbered}
 
-``` default
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;  Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+## Emacs Configuration (MacOSX, LinuxOS / Emacs 30+)
 
-;; This configuration is designed as a lightweight but powerful
-;; academic computing environment built on top of Emacs.
-;;
-;; It is intended to support a complete research workflow that spans
-;; note-taking, reproducible analysis, manuscript writing, and
-;; publication preparation within a single extensible system.
+This configuration is designed as a lightweight but powerful academic computing environment built on top of Emacs. It is intended to support a complete research workflow that spans note-taking, reproducible analysis, manuscript writing, and
+publication preparation within a single extensible system.
 
-;; The core idea behind this setup is integration rather than
-;; fragmentation. Instead of relying on separate tools for reading,
-;; writing, coding, and referencing, this configuration brings
-;; everything into a unified environment where ideas can move
-;; seamlessly from raw notes to structured knowledge to publishable
-;; outputs.
+The core idea behind this setup is integration rather than fragmentation. Instead of relying on separate tools for reading,
+writing, coding, and referencing, this configuration brings everything into a unified environment where ideas can move
+seamlessly from raw notes to structured knowledge to publishable outputs.
 
-;; The system is particularly optimized for academic research work,
-;; including LaTeX-based manuscript preparation (via AUCTeX and
-;; latexmk), interactive PDF navigation (via PDF Tools with SyncTeX),
-;; literate knowledge management (via Org mode and Org-roam), and
-;; statistical computing workflows (via ESS for R). It also integrates
-;; citation management through Zotero-compatible BibTeX workflows using
-;; Citar.
+The system is particularly optimized for academic research work, including LaTeX-based manuscript preparation (via AUCTeX and
+latexmk), interactive PDF navigation (via PDF Tools with SyncTeX) and literate knowledge management (via Org mode and Org-roam).
 
-;; Modern editing ergonomics are provided through a minimal and fast
-;; completion stack (Vertico, Orderless, Marginalia, Corfu, and Cape),
-;; replacing older and slower frameworks. This ensures responsiveness
-;; even in large projects while preserving extensibility.
+Overall, this configuration is not just an editor setup but a research operating environment. It is designed to scale from small
+notes to full-length academic manuscripts and to remain stable, reproducible, and maintainable over long-term research projects.
 
-;; The visual design follows a minimal and distraction-reduced layout
-;; suitable for long writing sessions. The interface prioritizes
-;; readability, keyboard-driven interaction, and reduced cognitive
-;; overhead, while still retaining optional GUI elements such as the
-;; menu bar for discoverability and accessibility.
-
-;; Overall, this configuration is not just an editor setup but a
-;; research operating environment. It is designed to scale from small
-;; notes to full-length academic manuscripts and to remain stable,
-;; reproducible, and maintainable over long-term research projects.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-```

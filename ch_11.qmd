@@ -1,4 +1,4 @@
-# latexmkrc
+# latexmkrc {.unnumbered}
 
 - Place .latexmkrc in \~/.latexmkrc
 

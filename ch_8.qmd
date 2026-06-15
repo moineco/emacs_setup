@@ -1,4 +1,4 @@
-# init-company.el
+# init-company.el {.unnumbered}
 
 - Place the init-company.el file in \~/.emacs.d/lisp/
 

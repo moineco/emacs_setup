@@ -1,4 +1,4 @@
-# init.el
+# init.el {.unnumbered}
 
 - Keep init.el in \~/.emacs.d/
 

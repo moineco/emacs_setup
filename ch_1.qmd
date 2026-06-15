@@ -1,4 +1,4 @@
-# structure
+# structure {.unnumbered}
 
 This Emacs configuration is well-structured for writing (especially in LaTeX and Org-mode), and personal knowledge management (via Org-roam).
 

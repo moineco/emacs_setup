@@ -8,10 +8,13 @@ book:
   date: "today"
   chapters:
     - index.qmd
-    - part: "Mac/Linux setup"
+    - ch_1.qmd
+    - part: ".emacs.d"
       chapters:
-        - ch_1.qmd
         - ch_2.qmd
+        - ch_11.qmd
+    - part: "lisp"
+      chapters:
         - ch_3.qmd
         - ch_4.qmd
         - ch_5.qmd
@@ -20,7 +23,6 @@ book:
         - ch_8.qmd
         - ch_9.qmd
         - ch_10.qmd
-        - ch_11.qmd
     #- references.qmd
 
 bibliography: references.bib

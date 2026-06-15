@@ -1,4 +1,4 @@
-# init-ui.el
+# init-ui.el {.unnumbered}
 
 - Place the init-ui.el file in \~/.emacs.d/lisp/
 

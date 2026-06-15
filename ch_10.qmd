@@ -1,4 +1,4 @@
-# init-pandoc.el
+# init-pandoc.el {.unnumbered}
 
 ``` default
 ;;; init-pandoc.el --- Pandoc integration -*- lexical-binding: t; -*-
