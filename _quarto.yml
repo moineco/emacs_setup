@@ -26,7 +26,7 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - darkly
+      - cosmo
       - brand
   pdf:
     documentclass: scrreprt
