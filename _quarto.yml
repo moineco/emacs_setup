@@ -3,26 +3,20 @@ project:
   output-dir: docs
 
 book:
-  title: "Emacs setup for LaTeX"
+  title: "Academic Emacs setup for LaTeX"
   author: "Moinul Islam"
   date: "today"
   chapters:
     - index.qmd
     - ch_1.qmd
-    - part: ".emacs.d"
-      chapters:
-        - ch_2.qmd
-        - ch_11.qmd
-    - part: "lisp"
-      chapters:
-        - ch_3.qmd
-        - ch_4.qmd
-        - ch_5.qmd
-        - ch_6.qmd
-        - ch_7.qmd
-        - ch_8.qmd
-        - ch_9.qmd
-        - ch_10.qmd
+    - ch_3.qmd
+    - ch_4.qmd
+    - ch_5.qmd
+    - ch_6.qmd
+    - ch_7.qmd
+    - ch_8.qmd
+    - ch_9.qmd
+    - ch_10.qmd
     #- references.qmd
 
 bibliography: references.bib

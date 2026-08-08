@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Emacs setup for LaTeX",
+    "title": "Academic Emacs setup for LaTeX",
     "section": "",
     "text": "Preface",
     "crumbs": [
@@ -58,7 +58,6 @@
     "section": "",
     "text": "Place the init-ui.el file in ~/.emacs.d/lisp/\n\n;;; init-ui.el --- Visual appearance and fonts\n\n(use-package doom-themes\n  :ensure t\n  :config\n  (condition-case nil\n      (load-theme 'doom-one t)\n    (error\n     (progn\n       (message \"doom-one not found, falling back to wombat theme.\")\n       (load-theme 'wombat t)))))\n\n(defun my/setup-font-based-on-resolution ()\n  \"Adjust font size automatically based on display resolution, with terminal fallback.\"\n  (interactive)\n  (if (display-graphic-p)\n      (let* ((display-width (display-pixel-width))\n             (font-profiles '((3000 . (:font \"Monaco\" :size 200))\n                              (2500 . (:font \"Monaco\" :size 190))\n                              (1920 . (:font \"Monaco\" :size 180))\n                              (0    . (:font \"Monaco\" :size 170))))\n             (selected-profile\n              (cl-loop for (min-width . settings) in font-profiles\n                       when (&gt; display-width min-width)\n                       return settings)))\n        (when selected-profile\n          (let ((font-name (plist-get selected-profile :font))\n                (font-size (plist-get selected-profile :size)))\n            (when (member font-name (font-family-list))\n              (set-face-attribute 'default nil :font font-name :height font-size)\n              (message \"GUI: Font set to %s (%d)\" font-name font-size)))))\n    ;; fallback for terminal mode\n    (set-face-attribute 'default nil :height 130)\n    (message \"TTY: Default font height set to 130\")))\n\n(add-hook 'window-setup-hook #'my/setup-font-based-on-resolution)\n\n(global-display-line-numbers-mode 1)\n(global-visual-line-mode 1)\n\n(provide 'init-ui)\n;;; init-ui.el ends here",
     "crumbs": [
-      "lisp",
       "init-ui.el"
     ]
   },
@@ -137,6 +136,16 @@
     "crumbs": [
       "lisp",
       "init-pandoc.el"
+    ]
+  },
+  {
+    "objectID": "index.html#emacs-configuration-macosx-linuxos",
+    "href": "index.html#emacs-configuration-macosx-linuxos",
+    "title": "Academic Emacs setup for LaTeX",
+    "section": "Emacs Configuration (MacOSX, LinuxOS)",
+    "text": "Emacs Configuration (MacOSX, LinuxOS)\nThis configuration is designed as a lightweight but powerful academic computing environment built on top of Emacs. It is intended to support a complete research workflow that spans note-taking, reproducible analysis, manuscript writing, and publication preparation within a single extensible system.\nThe core idea behind this setup is integration rather than fragmentation. Instead of relying on separate tools for reading, writing, coding, and referencing, this configuration brings everything into a unified environment where ideas can move seamlessly from raw notes to structured knowledge to publishable outputs.\nThe system is particularly optimized for academic research work, including LaTeX-based manuscript preparation (via AUCTeX and latexmk), interactive PDF navigation (via PDF Tools with SyncTeX) and literate knowledge management (via Org mode and Org-roam).\nOverall, this configuration is not just an editor setup but a research operating environment. It is designed to scale from small notes to full-length academic manuscripts and to remain stable, reproducible, and maintainable over long-term research projects.",
+    "crumbs": [
+      "Preface"
     ]
   }
 ]
