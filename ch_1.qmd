@@ -1,23 +1,23 @@
 # structure {.unnumbered}
 
-This Emacs configuration is well-structured for writing (especially in LaTeX and Org-mode), and personal knowledge management (via Org-roam).
-
-I use this directly as `~/.emacs.d/init.el` file.
-
 ``` default
-~/.emacs.d/
-├── init.el                    ;; Main entry point 
+emacs.d/
+├── early-init.el
+├── init.el
 └── lisp/
-    ├── init-ui.el             ;; Fonts, theme, visuals
-    ├── init-editing.el        ;; Smartparens, smex, wraps, spelling
-    ├── init-org.el            ;; Org-mode settings
-    ├── init-roam.el           ;; Org-roam config
-    ├── init-latex.el          ;; AUCTeX + latexmk setup
-    ├── init-company.el        ;; Company-mode auto-completion
-    ├── init-pandoc.el         ;; Pandoc to convert file format
-    └── init-os.el             ;; OS-specific setup
+    ├── init-system.el
+    ├── init-completion.el
+    ├── init-ui.el
+    ├── init-editing.el
+    ├── init-org.el
+    ├── init-roam.el
+    ├── init-citations.el
+    ├── init-pdf.el
+    ├── init-latex.el
+    ├── init-company.el
+    └── init-pandoc.el
 ```
 
-- Place each file in \~/.emacs.d/lisp/
-- Place init.el in \~/.emacs.d/
-- Place .latexmkrc in \~/.latexmkrc
+- Place early-init.el and init.el in \~/.emacs.d/
+- Place other files in \~/.emacs.d/lisp/
+

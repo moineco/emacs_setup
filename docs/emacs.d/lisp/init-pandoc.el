@@ -1,0 +1,256 @@
+;;; init-pandoc.el --- Pandoc integration -*- lexical-binding: t; -*-
+
+;;; Commentary:
+;; Cross-platform Pandoc workflow for:
+;; - macOS
+;; - Ubuntu/Linux
+;; - LaTeX → DOCX
+;; - Quarto projects
+;; - BibTeX citations
+;; - Word templates
+
+;;; Code:
+
+(require 'cl-lib)
+
+(defgroup my-pandoc nil
+  "Pandoc workflow utilities."
+  :group 'tools)
+
+;; --------------------------------------------------
+;; Locate Pandoc
+;; --------------------------------------------------
+
+(defcustom my-pandoc-command
+  (or (executable-find "pandoc")
+      (my/first-existing-file "/opt/homebrew/bin/pandoc" ;; macOS, Apple Silicon Homebrew
+                               "/usr/local/bin/pandoc"    ;; macOS, Intel Homebrew
+                               "/usr/bin/pandoc")          ;; Linux package manager
+      "pandoc") ;; last resort: rely on PATH at call time
+  "Pandoc executable."
+  :type 'string)
+
+(defcustom my-pandoc-default-reference-doc nil
+  "Fallback Word template."
+  :type '(choice file (const nil)))
+
+;; --------------------------------------------------
+;; Helpers
+;; --------------------------------------------------
+
+(defun my-pandoc--project-root ()
+  "Return project root."
+  (or (when (fboundp 'project-current)
+        (when-let ((proj (project-current nil)))
+          (project-root proj)))
+      default-directory))
+
+(defun my-pandoc--find-bib ()
+  "Find bibliography file."
+  (let ((root (my-pandoc--project-root)))
+    (car (append
+          (directory-files root t "\\.bib$")
+          nil))))
+
+(defun my-pandoc--find-reference-doc ()
+  "Find reference.docx."
+  (let ((root (my-pandoc--project-root)))
+    (or (car (directory-files root t "reference\\.docx$"))
+        my-pandoc-default-reference-doc)))
+
+(defun my-pandoc--docx-name (texfile)
+  "Generate output DOCX filename."
+  (concat
+   (file-name-sans-extension texfile)
+   ".docx"))
+
+(defun my-pandoc--open-file (file)
+  "Open FILE with the OS's default application."
+
+  (cond
+   ((eq system-type 'darwin)
+    (start-process "pandoc-open" nil "open" file))
+
+   ((eq system-type 'windows-nt)
+    (w32-shell-execute "open" file))
+
+   (t
+    ;; Linux/BSD: prefer xdg-open, but don't assume it's the only
+    ;; opener present on every distro/desktop.
+    (let ((opener (my/first-executable "xdg-open" "gio" "gnome-open" "kde-open")))
+      (if opener
+          (start-process "pandoc-open" nil opener file)
+        (message "No file opener found (tried xdg-open/gio/gnome-open/kde-open) -- open %s manually." file))))))
+
+;; --------------------------------------------------
+;; Async Runner
+;; --------------------------------------------------
+
+(defun my-pandoc--run (args output)
+  "Run Pandoc asynchronously."
+
+  (let ((buffer (get-buffer-create "*Pandoc*")))
+
+    (with-current-buffer buffer
+      (erase-buffer))
+
+    (make-process
+     :name "pandoc"
+     :buffer buffer
+     :command (cons my-pandoc-command args)
+     :sentinel
+     (lambda (proc event)
+       (when (string-match-p "finished" event)
+         (message "Pandoc finished: %s" output))))
+
+    (display-buffer buffer)))
+
+;; --------------------------------------------------
+;; Basic Conversion
+;; --------------------------------------------------
+
+(defun my/pandoc-tex-to-docx ()
+  "Convert current TeX file to DOCX."
+
+  (interactive)
+
+  (unless buffer-file-name
+    (user-error "Buffer not visiting a file"))
+
+  (save-buffer)
+
+  (let* ((texfile buffer-file-name)
+         (output (my-pandoc--docx-name texfile)))
+
+    (my-pandoc--run
+     (list texfile
+           "-o"
+           output)
+     output)))
+
+;; --------------------------------------------------
+;; Citations
+;; --------------------------------------------------
+
+(defun my/pandoc-tex-to-docx-citeproc ()
+  "Convert TeX using BibTeX."
+
+  (interactive)
+
+  (save-buffer)
+
+  (let* ((texfile buffer-file-name)
+         (bibfile (my-pandoc--find-bib))
+         (output (my-pandoc--docx-name texfile)))
+
+    (unless bibfile
+      (user-error "No .bib file found"))
+
+    (my-pandoc--run
+     (list texfile
+           "--citeproc"
+           (concat "--bibliography=" bibfile)
+           "-o"
+           output)
+     output)))
+
+;; --------------------------------------------------
+;; Journal Version
+;; --------------------------------------------------
+
+(defun my/pandoc-tex-to-docx-journal ()
+  "Convert using citations and Word template."
+
+  (interactive)
+
+  (save-buffer)
+
+  (let* ((texfile buffer-file-name)
+         (bibfile (my-pandoc--find-bib))
+         (refdoc (my-pandoc--find-reference-doc))
+         (output (my-pandoc--docx-name texfile))
+         (args (list texfile
+                     "--citeproc"
+                     "--number-sections")))
+
+    (when bibfile
+      (setq args
+            (append args
+                    (list
+                     (concat "--bibliography=" bibfile)))))
+
+    (when refdoc
+      (setq args
+            (append args
+                    (list
+                     (concat "--reference-doc=" refdoc)))))
+
+    (setq args
+          (append args
+                  (list "-o" output)))
+
+    (my-pandoc--run args output)))
+
+;; --------------------------------------------------
+;; Open Generated DOCX
+;; --------------------------------------------------
+
+(defun my/pandoc-open-docx ()
+  "Open DOCX associated with current TeX file."
+
+  (interactive)
+
+  (let ((docx
+         (my-pandoc--docx-name
+          buffer-file-name)))
+
+    (if (file-exists-p docx)
+        (my-pandoc--open-file docx)
+      (message "No DOCX found"))))
+
+;; --------------------------------------------------
+;; Convenience Menu
+;; --------------------------------------------------
+
+(defun my/pandoc-menu ()
+  "Pandoc command menu."
+
+  (interactive)
+
+  (pcase
+      (completing-read
+       "Pandoc: "
+       '("Basic DOCX"
+         "DOCX + Citations"
+         "Journal DOCX"
+         "Open DOCX"))
+    ("Basic DOCX"
+     (my/pandoc-tex-to-docx))
+    ("DOCX + Citations"
+     (my/pandoc-tex-to-docx-citeproc))
+    ("Journal DOCX"
+     (my/pandoc-tex-to-docx-journal))
+    ("Open DOCX"
+     (my/pandoc-open-docx))))
+
+;; --------------------------------------------------
+;; Keybindings
+;; --------------------------------------------------
+
+(global-set-key (kbd "C-c p p") #'my/pandoc-menu)
+
+(global-set-key (kbd "C-c p d")
+                #'my/pandoc-tex-to-docx)
+
+(global-set-key (kbd "C-c p c")
+                #'my/pandoc-tex-to-docx-citeproc)
+
+(global-set-key (kbd "C-c p j")
+                #'my/pandoc-tex-to-docx-journal)
+
+(global-set-key (kbd "C-c p o")
+                #'my/pandoc-open-docx)
+
+(provide 'init-pandoc)
+
+;;; init-pandoc.el ends here

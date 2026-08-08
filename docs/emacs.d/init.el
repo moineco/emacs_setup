@@ -1,0 +1,102 @@
+;;; init.el --- Academic Emacs Configuration -*- lexical-binding: t; -*-
+
+;; ==================================================
+;; Performance (runtime, post-startup)
+;; ==================================================
+;; early-init.el set gc-cons-threshold very high for the duration of
+;; startup (package loading etc.); bring it back down to a sane
+;; runtime value once that's done, so GC still runs at a reasonable
+;; cadence during normal editing.
+
+(setq read-process-output-max (* 1024 1024))
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 50 1024 1024)
+                  gc-cons-percentage 0.1)
+            (message "✓ Emacs loaded in %.2fs (%d GCs)"
+                     (float-time
+                      (time-subtract after-init-time before-init-time))
+                     gcs-done)))
+
+;; ==================================================
+;; Package Management (ELPA / MELPA / NONGNU)
+;; ==================================================
+
+(require 'package)
+
+(setq package-archives
+      '(("melpa"        . "https://melpa.org/packages/")
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("gnu"          . "https://elpa.gnu.org/packages/")
+        ("nongnu"       . "https://elpa.nongnu.org/nongnu/")))
+
+(unless package--initialized
+  (package-initialize))
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; ==================================================
+;; use-package bootstrap (safe fallback)
+;; ==================================================
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+;; ==================================================
+;; Load Path (modular config)
+;; ==================================================
+
+(add-to-list 'load-path
+             (expand-file-name "lisp" user-emacs-directory))
+
+;; ==================================================
+;; Custom file (keep clean init.el)
+;; ==================================================
+
+(setq custom-file
+      (expand-file-name "custom.el" user-emacs-directory))
+
+(load custom-file 'noerror)
+
+;; ==================================================
+;; Core Modules (cross-platform)
+;; ==================================================
+
+(require 'init-system)     ;; macOS + Linux system settings
+(require 'init-completion) ;; vertico/orderless/marginalia/consult + which-key (before anything using completing-read)
+(require 'init-ui)         ;; theme, fonts, visual setup
+(require 'init-editing)    ;; editing behavior
+(require 'init-org)        ;; Org mode
+(require 'init-roam)       ;; Org-roam
+(require 'init-citations)  ;; citar: .bib citation completion/insertion (after init-roam: uses org-roam-directory)
+(require 'init-pdf)        ;; pdf-tools + org-noter (after init-roam: uses org-roam-directory)
+(require 'init-latex)      ;; LaTeX + latexmk + AUCTeX
+(require 'init-company)    ;; completion system
+(require 'init-pandoc)     ;; pandoc to convert docx
+
+;; ==================================================
+;; UI cleanup (optional global defaults)
+;; ==================================================
+
+(setq inhibit-startup-screen nil
+      inhibit-startup-message nil)
+
+(column-number-mode 1)
+(save-place-mode 1)
+
+;; ==================================================
+;; Startup summary
+;; ==================================================
+
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "✓ Academic Emacs ready: Org-roam + LaTeX + Citations + PDF")))
+
+(provide 'init)
+
+;;; init.el ends here

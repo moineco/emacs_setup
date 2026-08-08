@@ -24,7 +24,7 @@
     "href": "ch_1.html",
     "title": "structure",
     "section": "",
-    "text": "This Emacs configuration is well-structured for writing (especially in LaTeX and Org-mode), and personal knowledge management (via Org-roam).\nI use this directly as ~/.emacs.d/init.el file.\n~/.emacs.d/\n├── init.el                    ;; Main entry point \n└── lisp/\n    ├── init-ui.el             ;; Fonts, theme, visuals\n    ├── init-editing.el        ;; Smartparens, smex, wraps, spelling\n    ├── init-org.el            ;; Org-mode settings\n    ├── init-roam.el           ;; Org-roam config\n    ├── init-latex.el          ;; AUCTeX + latexmk setup\n    ├── init-company.el        ;; Company-mode auto-completion\n    ├── init-pandoc.el         ;; Pandoc to convert file format\n    └── init-os.el             ;; OS-specific setup\n\nPlace each file in ~/.emacs.d/lisp/\nPlace init.el in ~/.emacs.d/\nPlace .latexmkrc in ~/.latexmkrc",
+    "text": "emacs.d/\n├── early-init.el\n├── init.el\n└── lisp/\n    ├── init-system.el\n    ├── init-completion.el\n    ├── init-ui.el\n    ├── init-editing.el\n    ├── init-org.el\n    ├── init-roam.el\n    ├── init-citations.el\n    ├── init-pdf.el\n    ├── init-latex.el\n    ├── init-company.el\n    └── init-pandoc.el\n\nPlace early-init.el and init.el in ~/.emacs.d/\nPlace other files in ~/.emacs.d/lisp/",
     "crumbs": [
       "structure"
     ]
