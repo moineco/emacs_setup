@@ -1,4 +1,4 @@
-# init-editing.el {.unnumbered}
+# init-editing.el
 
 - Place the init-editing.el file in \~/.emacs.d/lisp/
 

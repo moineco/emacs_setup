@@ -1,0 +1,376 @@
+# User guide
+
+A working reference for your Emacs setup: writing LaTeX papers, taking notes in Org/org-roam, citing from `.bib` files, and reading/annotating PDFs — the same way on macOS and Ubuntu.
+
+------------------------------------------------------------------------
+
+## 1. How it's organized
+
+```         
+~/.emacs.d/
+├── early-init.el           # GC tuning + package-system setup (loads before everything)  [NEW]
+├── init.el                 # bootstraps package.el/use-package, requires everything below
+└── lisp/
+    ├── init-system.el      # OS settings + shared resolution helpers (loads first)
+    ├── init-completion.el   # vertico/orderless/marginalia/consult + which-key            [NEW]
+    ├── init-ui.el           # theme, fonts, visual behavior
+    ├── init-editing.el      # smartparens, spell-check, wrapping, misc editing
+    ├── init-org.el          # Org mode + org-cite export config
+    ├── init-roam.el         # org-roam: notes, dailies, capture templates
+    ├── init-citations.el    # citar: .bib-based citation completion       [NEW]
+    ├── init-pdf.el           # pdf-tools + org-noter: read/annotate PDFs   [NEW]
+    ├── init-latex.el        # AUCTeX + latexmk + pdf-tools preview
+    ├── init-company.el      # in-buffer completion (company-mode)
+    └── init-pandoc.el       # LaTeX → DOCX export for journal submission
+```
+
+**Load order matters.** `early-init.el` runs before `package.el` and before the frame is created — it's where GC tuning and `package-enable-at-startup` belong, since setting them later has little effect. `init-system.el` loads first among the `lisp/` modules because it defines helper functions (`my/first-existing-directory`, `my/first-existing-file`, `my/first-executable`) that later modules use to resolve paths and tools at runtime instead of hardcoding one machine's layout. `init-completion.el` loads right after it, before anything that uses `completing-read` (citar, org-roam). `init-citations.el` and `init-pdf.el` load after `init-roam.el` because they both reference `org-roam-directory`.
+
+------------------------------------------------------------------------
+
+## 2. What's new, and why it's worth using
+
+### Citations — `init-citations.el` (citar)
+
+Before, there was no way to insert a citation while writing — you'd alt-tab to look up a key or type it from memory. Now:
+
+| Command | Where | What it does |
+|------------------------|------------------------|------------------------|
+| `C-c b b` | Org or LaTeX buffer | Search your `.bib` file and insert a citation at point |
+| `C-c b o` | Anywhere | Open the PDF/file attached to a reference (if you have one linked) |
+| `C-c b r` | Anywhere | Open your notes on a reference |
+| `C-c b i` | Org buffer | `org-cite-insert` (the native Org citation UI, if you prefer it to citar's) |
+
+It works identically whether you're in a `.org` file (via `org-cite`, Org's built-in citation system since 9.5) or a `.tex` file (via AUCTeX). One `.bib` file, one keybinding, both formats.
+
+### PDF reading and annotation — `init-pdf.el` (pdf-tools + org-noter)
+
+`init-ui.el` already had a hook disabling line numbers in `pdf-view-mode` — implying PDF viewing was planned but the package itself was never wired in. Now it is:
+
+- **pdf-tools** replaces the built-in DocView. Real text selection, real search, annotations, much faster rendering.
+- **org-noter** lets you open a PDF and an Org notes buffer side by side — your notes stay synced to the page you're reading, and they live in your org-roam directory, so literature notes are searchable alongside everything else.
+- Installation is deferred (`pdf-loader-install`) until you actually open a PDF, so it doesn't slow down startup.
+
+### LaTeX preview via pdf-tools, not a separate app
+
+`init-latex.el` used to branch on OS: Skim on macOS, Evince on Ubuntu, both hardcoded paths. It now uses pdf-tools itself as the preview target (`TeX-view-program-selection '((output-pdf "PDF Tools"))`), so:
+
+- Compiling with `C-c C-c` → `LatexMk` opens/updates the PDF **inside Emacs**, in the same viewer you use for reading papers.
+- SyncTeX (`C-c C-v` for forward search, click-to-jump for inverse search) works through pdf-tools instead of an external app's own SyncTeX support.
+- No dependency on Skim or Evince being installed at all, on either OS. (A fallback to a discovered external viewer only kicks in if you're running Emacs without a graphical frame, e.g. over SSH.)
+
+### Cross-platform path/tool resolution — `init-system.el`
+
+Three helper functions, used throughout the rest of the config instead of hardcoded single paths:
+
+``` elisp
+(my/first-existing-directory "~/MEGA/org" "~/Org" "~/org")
+(my/first-existing-file "~/MEGA/bibliography/references.bib" ...)
+(my/first-executable "aspell" "hunspell" "ispell")
+```
+
+Each tries its candidates in order and returns the first one that actually exists on *this* machine. This is what makes the same `init.el` work on both your macOS and Ubuntu installs without editing it per-machine — see §5 if you need to add a new candidate path.
+
+### Minibuffer completion & discoverability — `init-completion.el`
+
+The single biggest day-to-day usability upgrade in this config. Before, citar's citation search, `org-roam-node-find`, and `M-x` all went through Emacs' plain default minibuffer — exact prefix matching, no previews, no annotations.
+
+- **vertico** — vertical, incremental completion UI for every minibuffer prompt.
+- **orderless** — match candidates in any word order (e.g. typing `smith 2020` finds "Smith, J. (2020) ..." in a citation search regardless of which word you typed first). This is what makes searching a large `.bib` file or a roam vault actually fast.
+- **marginalia** — rich inline annotations (docstrings next to `M-x` commands, file sizes/dates next to `find-file` candidates).
+- **consult** — a set of drop-in replacement commands with live preview (buffer switching, in-buffer search, jumping to headings).
+- **which-key** — pops up available keybindings automatically when you pause after a prefix key like `C-c b` or `C-c n`, so you don't need to keep this handbook open to remember them.
+
+### Faster, cleaner startup — `early-init.el`
+
+Moved `gc-cons-threshold` and `package-enable-at-startup` out of `init.el` and into a new `early-init.el`, which Emacs (27+) loads before `package.el` runs its own automatic setup and before the frame is created. Setting `package-enable-at-startup` inside `init.el` (where it lived before) had essentially no effect, since Emacs had already acted on it by the time `init.el` loaded — `early-init.el` is the only place it actually does anything. The GC threshold is set very high during startup here, then brought back down to a sane runtime value (50MB) once `emacs-startup-hook` fires, from `init.el`.
+
+------------------------------------------------------------------------
+
+## 3. Daily workflow keybindings
+
+### Writing (LaTeX)
+
+| Key | Action |
+|------------------------------------|------------------------------------|
+| `C-c C-c` | Compile (runs `latexmk`, default command) |
+| `C-c C-v` | View/preview PDF, jump to current point (forward search) |
+| `C-c b b` | Insert citation (citar) |
+| `C-c ]` / RefTeX menu | Insert cross-reference (`turn-on-reftex` is on by default) |
+
+### Notes (Org / org-roam)
+
+| Key | Action |
+|------------------------------------|------------------------------------|
+| `C-c n f` | Find or create a roam node |
+| `C-c n i` | Insert a link to a roam node |
+| `C-c n b` | Toggle the roam backlinks buffer |
+| `C-c n t` | Capture a task under a project node |
+| `C-c n p` | Find-or-create a project node |
+| `C-c n I` | Insert a node link and finish capture immediately (no extra prompts) |
+| `C-c n d` | Dailies keymap (e.g. `C-c n d Y` = yesterday's daily note, `T` = tomorrow's) |
+| `C-c b i` | Insert citation via native `org-cite-insert` |
+
+### Reading PDFs
+
+| Key | Action |
+|------------------------------------|------------------------------------|
+| `j` / `k` | Next/previous line-or-page |
+| `h` / `l` | Previous/next page |
+| `C-c b o` | Open the PDF linked to a reference (citar) |
+| org-noter (once launched on a PDF) | Notes buffer stays synced to your position in the PDF |
+
+### Navigation & search (consult / which-key)
+
+| Key | Action |
+|------------------------------------|------------------------------------|
+| `C-x b` | `consult-buffer` — switch buffers/recent files/bookmarks with live preview |
+| `C-c s l` | `consult-line` — fuzzy search current buffer |
+| `C-c s r` | `consult-ripgrep` — project-wide search (needs `ripgrep` installed separately) |
+| `C-c s o` | `consult-outline` — jump to a heading/section in the current buffer |
+| `C-c s h` | `consult-org-heading` — jump to any heading in the current Org file |
+| `M-y` | `consult-yank-pop` — browse kill-ring with preview |
+| *(pause after any `C-c` prefix)* | which-key shows what's available — use this instead of memorizing the tables above |
+
+### Converting to DOCX for journal submission
+
+| Key | Action |
+|------------------------------------|------------------------------------|
+| `C-c p p` | Pandoc menu (pick basic/citations/journal/open) |
+| `C-c p d` | Basic TeX → DOCX |
+| `C-c p c` | TeX → DOCX with citations (`--citeproc`, auto-finds a `.bib` in the project) |
+| `C-c p j` | Journal version: citations + numbered sections + a `reference.docx` template if one exists in the project folder |
+| `C-c p o` | Open the generated DOCX |
+
+------------------------------------------------------------------------
+
+## 4. Maintenance checklist
+
+Run these occasionally, not just when something breaks:
+
+- **`M-x package-install-selected-packages`** — reinstalls anything `use-package :ensure t` expects but doesn't currently have. Cheap insurance after an interrupted first-run install (see §6).
+- **`M-x package-refresh-contents`** then **`M-x package-list-packages`**, `U` then `x` — the normal "update everything" flow. Do this every month or so; AUCTeX, org-roam, and pdf-tools all move.
+- **Check `*Messages*` (`C-h e`)** after any Emacs restart following a config change — install/compile failures show up there in red, easy to miss otherwise.
+- **`EMACS_DEBUG=1 emacs`** — turns `debug-on-error` back on for a session, without permanently enabling it (it's off by default in `init-editing.el` now, so ordinary errors don't interrupt writing).
+
+------------------------------------------------------------------------
+
+## 5. Adding a new machine, or a folder in a different place
+
+If a third machine mounts your notes/bibliography somewhere else, you don't need to change every file — just add the new path to the relevant candidate list:
+
+- **Org notes root**: `my/org-root` in `init-org.el`
+- **org-roam notes**: the `org-roam-directory` candidate list in `init-roam.el`
+- **Bibliography**: `my-bibliography-files` in `init-citations.el`
+- **Spell-checker / pandoc / any other tool**: these already resolve from `PATH` automatically via `my/first-executable`, so a new machine just needs the tool installed, no config change.
+
+Pattern to follow, e.g. adding a new Org root candidate:
+
+``` elisp
+(defvar my/org-root
+  (or (my/first-existing-directory "~/MEGA/org" "~/Org" "~/org" "~/NewPath/org")
+      (expand-file-name "org" user-emacs-directory))
+  "Root directory for Org notes.")
+```
+
+------------------------------------------------------------------------
+
+## 6. Troubleshooting
+
+**Emacs seems frozen on first launch after a config change.** Almost always package installation/compilation, not a real hang — `use-package :ensure t` pulls in a lot at once (AUCTeX especially is slow to compile). Give it a few minutes. If you must confirm it's alive rather than stuck: open a terminal, `top`/`htop`, check whether the `emacs` process is using CPU (busy = probably fine) or sitting near 0% (possibly actually blocked, e.g. on network).
+
+**Theme looks wrong / lost your colors after an interrupted startup.** `init-ui.el` silently falls back to the built-in `wombat` theme if `doom-one` fails to load (e.g. `doom-themes` wasn't fully installed). Check with:
+
+```         
+M-x package-installed-p RET doom-themes RET
+```
+
+If `nil`: `M-x package-refresh-contents`, then `M-x package-install RET doom-themes RET`, then `M-x load-theme RET doom-one RET`.
+
+**`package-refresh-contents` or an install hangs specifically.** Likely a network/proxy/DNS issue reaching MELPA from that machine, not an Emacs problem. Test from a terminal: `curl -I https://melpa.org/packages/`. If that also hangs or fails, the fix is on the network side, not in `init.el`.
+
+**AUCTeX completion (labels/citations/macros) doesn't seem to work in `.tex` files.** This was an actual bug we fixed: `init-company.el` used to have the generic completion backends silently override the LaTeX-specific ones due to `add-hook` ordering. If you still see this, confirm you're on the current `init-company.el` (the LaTeX-specific dolist should *not* include `LaTeX-mode-hook`).
+
+**A `.bib` file, org-roam folder, or PDF viewer doesn't behave as expected on a given machine.** Check what actually resolved: `M-x eval-expression RET my-bibliography-files` or `org-roam-directory` will show you the path that was picked. If it's the fallback rather than what you expected, your synced folder likely isn't mounted where the candidate list expects — see §5.
+
+**A wave of `Failed to install X: .../compat-VERSION.tar: Not found` errors, followed by `Cannot load X` for several unrelated packages at once.** Not several separate bugs — one shared dependency. `compat` is a small library that vertico, orderless, marginalia, consult, org-appear, citar, and org-noter all rely on. If your local package index still points at a `compat` version that's since been pruned from GNU ELPA, every package that needs it fails at the same download step, and everything downstream cascades into "Cannot load." Fix:
+
+```         
+M-x package-refresh-contents
+M-x package-install RET compat RET
+M-x package-install-selected-packages
+```
+
+Then restart Emacs. If the refresh doesn't actually pick up a new index (some setups cache more aggressively), force it from a terminal first:
+
+``` bash
+rm -f ~/.emacs.d/elpa/archives/gnu/archive-contents
+rm -f ~/.emacs.d/elpa/archives/melpa/archive-contents
+rm -f ~/.emacs.d/elpa/archives/nongnu/archive-contents
+```
+
+then relaunch Emacs and refresh again.
+
+**`Cannot load org-noter` (or any single package) with no obvious cause.** Before assuming it's specific to that package, check `*Messages*` (`C-h e`) for the *first* error in the sequence, not just the last line — `use-package` often prints a whole chain of failures and the useful one (a missing dependency, a stale archive URL, a network timeout) is usually earlier than the "Cannot load" line itself, which is just the final symptom.
+
+------------------------------------------------------------------------
+
+## 7. What each module owns (quick lookup)
+
+| Module | Owns |
+|------------------------------------|------------------------------------|
+| `early-init.el` | GC tuning during startup, `package-enable-at-startup`, pre-frame settings |
+| `init-system.el` | OS branching, PATH, `exec-path-from-shell`, resolution helpers |
+| `init-completion.el` | vertico, orderless, marginalia, consult, which-key |
+| `init-ui.el` | Theme, fonts, emoji, line numbers, scrolling, frame chrome |
+| `init-editing.el` | smartparens, rainbow-delimiters, wrapping, spell-check, `debug-on-error` |
+| `init-org.el` | Org core behavior, TODO states, `org-cite` export processors, `my/org-root` |
+| `init-roam.el` | org-roam directory/capture templates/dailies |
+| `init-citations.el` | citar, `.bib` resolution, citation keybindings |
+| `init-pdf.el` | pdf-tools, org-noter |
+| `init-latex.el` | AUCTeX, latexmk, RefTeX, PDF preview target |
+| `init-company.el` | Completion backends (generic + LaTeX-specific) |
+| `init-pandoc.el` | TeX → DOCX conversion for journal submission |
+
+------------------------------------------------------------------------
+
+## 8. Index
+
+*Entries reference section numbers (§), not page numbers — stable across the Markdown, Quarto, and PDF versions of this handbook even as content is added.*
+
+**A**
+
+- `add-hook` ordering bug (company-mode) — §6
+- annotations, PDF — see org-noter
+- archive-contents, stale — §6
+- aspell / hunspell / ispell — §2, §5, §7
+- AUCTeX — §2, §3, §6, §7
+
+**B**
+
+- backlinks buffer (org-roam) — §3
+- `.bib` file resolution — §2, §5, §6, §7
+- bibliography, adding a new path for — §5
+
+**C**
+
+- capture templates (org-roam) — §3, §7
+- citar — §2, §3, §5, §7
+- citation insertion — §2, §3
+- `compat` (shared dependency, cascading install failures) — §6
+- company-mode (completion backends) — §6, §7
+- consult — §2, §3, §7
+- `consult-buffer` / `consult-line` / `consult-org-heading` / `consult-ripgrep` / `consult-yank-pop` — §3
+- cross-platform path/tool resolution — §2, §5, §7
+- cross-reference insertion (RefTeX) — §3
+
+**D**
+
+- daily notes (org-roam dailies) — §3
+- `debug-on-error` — §4, §7
+- DOCX export — §3, §7
+- doom-themes (theme fallback) — §6
+
+**E**
+
+- early-init.el — §1, §2, §7
+- `EMACS_DEBUG` environment variable — §4
+- `emacs-startup-hook` — §2
+- `exec-path-from-shell` — §7
+
+**F**
+
+- fallback theme (`wombat`) — §6
+- forward/inverse search (SyncTeX) — §2, §3
+- frozen/unresponsive Emacs at startup — §6
+
+**G**
+
+- `gc-cons-threshold` — §2, §7
+- GNU ELPA — §6
+
+**H**
+
+- hunspell — see aspell
+
+**I**
+
+- `init-citations.el` — §1, §2, §5, §7
+- `init-company.el` — §1, §6, §7
+- `init-completion.el` — §1, §2, §7
+- `init-editing.el` — §1, §4, §7
+- `init-latex.el` — §1, §2, §5, §7
+- `init-org.el` — §1, §5, §7
+- `init-pandoc.el` — §1, §3, §7
+- `init-pdf.el` — §1, §2, §7
+- `init-roam.el` — §1, §5, §7
+- `init-system.el` — §1, §2, §5, §7
+- `init-ui.el` — §2, §6, §7
+- ispell — see aspell
+
+**K**
+
+- keybindings, discovering live — see which-key
+
+**L**
+
+- LatexMk / latexmk — §2, §3, §7
+- load order (module dependencies) — §1
+
+**M**
+
+- machine, adding a new — §5
+- marginalia — §2, §7
+- MELPA — §6
+- module ownership (quick lookup table) — §7
+
+**N**
+
+- network/proxy issues (install hangs) — §6
+- `.tex` files, completion in — §6
+
+**O**
+
+- orderless — §2, §7
+- org-cite — §2, §3
+- org-cite-insert — §2, §3
+- org-noter — §2, §3, §6, §7
+- org-roam — §1, §2, §3, §5, §7
+- `org-roam-directory` — §1, §5
+
+**P**
+
+- `package-install-selected-packages` — §4, §6
+- `package-refresh-contents` — §4, §6
+- `package-enable-at-startup` — §2, §7
+- pandoc — §3, §5, §7
+- PDF preview (LaTeX) — §2, §3
+- pdf-loader-install — §2
+- pdf-tools — §1, §2, §3, §6, §7
+- project node (org-roam) — §3
+
+**R**
+
+- reference notes, opening — §3
+- RefTeX — §3, §7
+- ripgrep (dependency for `consult-ripgrep`) — §3
+
+**S**
+
+- spell-checker resolution — §2, §5, §7
+- startup performance — §2, §7
+- SyncTeX — see forward/inverse search
+
+**T**
+
+- theme fallback — see doom-themes
+- troubleshooting — §6
+
+**V**
+
+- vertico — §2, §7
+
+**W**
+
+- which-key — §2, §3, §7
+- `.tex` workflow — §3

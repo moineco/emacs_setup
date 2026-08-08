@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - ch_1.qmd
+    - ch_2.qmd
     - ch_3.qmd
     - ch_4.qmd
     - ch_5.qmd
@@ -17,6 +18,7 @@ book:
     - ch_8.qmd
     - ch_9.qmd
     - ch_10.qmd
+    - ch_12.qmd
     #- references.qmd
 
 bibliography: references.bib

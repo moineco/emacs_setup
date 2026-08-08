@@ -1,4 +1,4 @@
-# init-os.el {.unnumbered}
+# init-os.el
 
 - Place the init-os.el file in \~/.emacs.d/lisp/
 

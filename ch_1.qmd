@@ -1,23 +1,70 @@
-# structure {.unnumbered}
+# early-init.el
 
-``` default
-emacs.d/
-├── early-init.el
-├── init.el
-└── lisp/
-    ├── init-system.el
-    ├── init-completion.el
-    ├── init-ui.el
-    ├── init-editing.el
-    ├── init-org.el
-    ├── init-roam.el
-    ├── init-citations.el
-    ├── init-pdf.el
-    ├── init-latex.el
-    ├── init-company.el
-    └── init-pandoc.el
+- Place early-init.el in \~/.emacs.d/
+
+
+```default
+;;; early-init.el --- Early initialization
+
+;;; Commentary:
+;; This file loads before init.el, before package.el runs its own
+;; automatic initialization, and before the frame is created. That
+;; makes it the right place for:
+;;   - GC tuning during startup (earlier = more of startup benefits)
+;;   - package-system setup (package-enable-at-startup has no effect
+;;     if set later, since Emacs has already acted on it by the time
+;;     init.el loads)
+;;   - anything that affects the very first frame, to avoid a visible
+;;     flash of unstyled UI before init-ui.el's theme applies
+;;
+;; init.el restores gc-cons-threshold to a sane runtime value once
+;; startup finishes (see its `emacs-startup-hook').
+
+;;; Code:
+
+;; ==================================================
+;; GC tuning during startup
+;; ==================================================
+;; Very high threshold while package.el/use-package/all init-*.el
+;; modules load, so frequent collections don't slow that process
+;; down. This is only safe because init.el lowers it again once
+;; `emacs-startup-hook' runs.
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.6)
+
+;; ==================================================
+;; Package system
+;; ==================================================
+;; init.el calls `package-initialize' itself (after configuring
+;; `package-archives'), so this prevents Emacs's own automatic
+;; initialization from doing it a second time before init.el gets a
+;; chance to set up the archive list.
+(setq package-enable-at-startup nil)
+
+;; ==================================================
+;; Native compilation
+;; ==================================================
+;; Suppress noisy async native-comp warnings as early as possible
+;; (some can otherwise appear before init.el even loads).
+(setq native-comp-async-report-warnings-errors nil)
+
+;; ==================================================
+;; First-frame behavior
+;; ==================================================
+;; Avoid Emacs doing extra work to fit the frame to content during
+;; the resize dance at startup -- faster, and avoids visible jitter.
+(setq frame-inhibit-implied-resize t)
+
+;; If you ever want to disable the menu bar / tool bar / scroll bar
+;; (currently left commented out, opt-in, in init-system.el), doing
+;; it here instead avoids a visible flash of them appearing and then
+;; disappearing after the frame is already shown:
+;;   (menu-bar-mode -1)
+;;   (tool-bar-mode -1)
+;;   (scroll-bar-mode -1)
+
+(provide 'early-init)
+
+;;; early-init.el ends here
 ```
-
-- Place early-init.el and init.el in \~/.emacs.d/
-- Place other files in \~/.emacs.d/lisp/
 

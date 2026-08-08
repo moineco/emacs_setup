@@ -1,4 +1,4 @@
-# init-roam.el {.unnumbered}
+# init-roam.el
 
 - Place the init-roam.el file in \~/.emacs.d/lisp/
 

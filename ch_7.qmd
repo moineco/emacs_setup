@@ -1,4 +1,4 @@
-# init-latex.el {.unnumbered}
+# init-latex.el
 
 - Place the init-latex.el file in \~/.emacs.d/lisp/
 
