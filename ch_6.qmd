@@ -1,6 +1,6 @@
 # init-roam.el
 
-- Place the init-roam.el file in \~/.emacs.d/lisp/
+Place the init-roam.el file in \~/.emacs.d/lisp/
 
 ``` default
 ;;; init-roam.el --- Org-roam setup

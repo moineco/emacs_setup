@@ -1,5 +1,7 @@
 # init-pandoc.el 
 
+Place the init-pandoc.el file in \~/.emacs.d/lisp/
+
 ``` default
 ;;; init-pandoc.el --- Pandoc integration -*- lexical-binding: t; -*-
 

@@ -1,6 +1,6 @@
 # init-editing.el
 
-- Place the init-editing.el file in \~/.emacs.d/lisp/
+Place the init-editing.el file in \~/.emacs.d/lisp/
 
 ``` default
 ;;; init-editing.el --- General editing enhancements

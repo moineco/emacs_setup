@@ -1,6 +1,6 @@
 # init.el
 
-- Keep init.el in \~/.emacs.d/
+Keep init.el in \~/.emacs.d/
 
 ``` default
 ;;; init.el --- Academic Emacs Configuration

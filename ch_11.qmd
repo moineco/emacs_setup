@@ -1,6 +1,6 @@
 # latexmkrc
 
-- Place .latexmkrc in \~/.latexmkrc
+Place .latexmkrc in \~/.latexmkrc
 
 ``` default
 # Generate pdf using pdflatex (-pdf)

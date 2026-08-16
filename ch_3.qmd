@@ -1,6 +1,6 @@
 # init-ui.el
 
-- Place the init-ui.el file in \~/.emacs.d/lisp/
+Place the init-ui.el file in \~/.emacs.d/lisp/
 
 ``` default
 ;;; init-ui.el --- Visual appearance and fonts

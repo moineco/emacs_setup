@@ -1,6 +1,6 @@
 # early-init.el
 
-- Place early-init.el in \~/.emacs.d/
+Place early-init.el in \~/.emacs.d/
 
 ```default
 ;;; early-init.el --- Early initialization
