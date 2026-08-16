@@ -3,33 +3,89 @@ project:
   output-dir: docs
 
 book:
-  title: "Academic Emacs setup for LaTeX"
+  title: "Academic Emacs: A Practical Setup for LaTeX"
+  subtitle: "A modern workflow for academic writing"
   author: "Moinul Islam"
-  date: "today"
+  date: today
+
   chapters:
     - index.qmd
-    - ch_1.qmd
-    - ch_2.qmd
-    - ch_3.qmd
-    - ch_4.qmd
-    - ch_5.qmd
-    - ch_6.qmd
-    - ch_7.qmd
-    - ch_8.qmd
-    - ch_9.qmd
-    - ch_10.qmd
-    - ch_12.qmd
-    #- references.qmd
+
+    - part: "Getting Started"
+      chapters:
+        - ch_1.qmd
+        - ch_2.qmd
+
+    - part: "Academic Emacs"
+      chapters:
+        - ch_3.qmd
+        - ch_4.qmd
+        - ch_5.qmd
+
+    - part: "LaTeX Workflow"
+      chapters:
+        - ch_6.qmd
+        - ch_7.qmd
+        - ch_8.qmd
+
+    - part: "Advanced Workflow"
+      chapters:
+        - ch_9.qmd
+        - ch_10.qmd
+        
+    - part: "User Guide"
+      chapters:
+        - ch_12.qmd
+
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+
+  page-navigation: true
 
 bibliography: references.bib
 
 format:
+
   html:
     theme:
       - cosmo
       - brand
+      - custom.scss
+
+    toc: true
+    toc-depth: 3
+
+    number-sections: true
+
+    code-fold: true
+    code-tools: true
+    code-copy: true
+
+    smooth-scroll: true
+
+    fig-align: center
+
+    html-math-method: katex
+
+    link-external-newwindow: true
+
   pdf:
     documentclass: scrreprt
+    pdf-engine: lualatex
+
+    number-sections: true
+    toc: true
+
+    fontsize: 11pt
+
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=28mm
+      - right=25mm
+
+    colorlinks: true
 
 editor: visual
-

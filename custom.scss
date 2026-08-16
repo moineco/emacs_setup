@@ -1,0 +1,315 @@
+/*-- scss:defaults --*/
+
+/* =========================================================
+   Academic Emacs
+   Custom Quarto HTML Theme
+   ========================================================= */
+
+/* Fonts */
+
+$font-family-sans-serif:
+  "Aptos",
+  "Helvetica Neue",
+  Arial,
+  sans-serif;
+
+$font-family-monospace:
+  "JetBrains Mono",
+  "SFMono-Regular",
+  Consolas,
+  monospace;
+
+
+/*-- scss:rules --*/
+
+
+/* =========================================================
+   FULL-WIDTH LAYOUT
+   ========================================================= */
+
+/* Main Quarto content */
+
+#quarto-content {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* Page columns */
+
+.page-columns {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* Article layout */
+
+.page-layout-article {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* Main content */
+
+main.content {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* Bootstrap containers */
+
+.container,
+.container-fluid {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+  font-family: $font-family-sans-serif;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+
+h1 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+
+h3 {
+  margin-top: 2rem;
+}
+
+
+/* =========================================================
+   CODE
+   ========================================================= */
+
+code {
+  font-family: $font-family-monospace;
+  font-size: 0.9em;
+}
+
+
+pre {
+  font-family: $font-family-monospace;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+
+pre code {
+  font-size: 0.9em;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  border-right: 1px solid var(--bs-border-color);
+}
+
+
+.sidebar-title {
+  font-weight: 700;
+}
+
+
+.sidebar-item {
+  margin-bottom: 0.15rem;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navbar {
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+
+/* =========================================================
+   BLOCKQUOTES
+   ========================================================= */
+
+blockquote {
+  padding: 0.8rem 1.2rem;
+  margin: 1.5rem 0;
+
+  border-left: 4px solid var(--bs-primary);
+
+  background: var(--bs-tertiary-bg);
+
+  border-radius: 0 6px 6px 0;
+}
+
+
+/* =========================================================
+   CALLOUTS
+   ========================================================= */
+
+.callout {
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table {
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+
+.table th {
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   FIGURES
+   ========================================================= */
+
+.figure {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+
+.figure-caption {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+
+/* =========================================================
+   LISTS
+   ========================================================= */
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+
+/* =========================================================
+   TITLE PAGE
+   ========================================================= */
+
+.quarto-title-block {
+  margin-bottom: 3rem;
+}
+
+
+.quarto-title-block .title {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+
+.quarto-title-block .subtitle {
+  font-size: 1.2rem;
+  opacity: 0.75;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.aa-DetachedSearchButton {
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   CODE TOOLBAR
+   ========================================================= */
+
+.code-tools-button {
+  border-radius: 5px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+  main.content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE SCREENS
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  main.content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+}
