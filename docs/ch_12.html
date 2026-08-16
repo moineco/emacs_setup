@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>11&nbsp; User guide – Academic Emacs setup for LaTeX</title>
+<title>11&nbsp; User guide – Academic Emacs: A Practical Setup for LaTeX</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -78,10 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5fd49111c67786fa9da7eec5f8b0b01d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d3f7f8e73c8d287b30bcf59c2b563615.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-b0e0106738735ef34ecf9e4abbef9b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,11 +109,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -122,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch_12.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch_12.html">User Guide</a></li><li class="breadcrumb-item"><a href="./ch_12.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -134,10 +135,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Academic Emacs setup for LaTeX</a> 
+      <a href="./">Academic Emacs: A Practical Setup for LaTeX</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -153,72 +154,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">early-init.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">init.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Academic Emacs</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">init-ui.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">init-editing.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">init-org.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">LaTeX Workflow</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">init-roam.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_7.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">init-latex.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_8.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">init-company.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Advanced Workflow</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">init-os.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_10.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">init-pandoc.el</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">User Guide</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ch_12.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -257,9 +313,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch_12.html">User Guide</a></li><li class="breadcrumb-item"><a href="./ch_12.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></h1>
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">User guide</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -700,6 +756,8 @@ M-x package-install-selected-packages</code></pre>
 <hr>
 
 
+<!-- -->
+
 </section>
 
 </main> <!-- /main -->
@@ -774,6 +832,57 @@ M-x package-install-selected-packages</code></pre>
       });
       clipboardModal.on('success', onCopySuccess);
     }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -790,6 +899,11 @@ M-x package-install-selected-packages</code></pre>
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1111,10 +1225,247 @@ M-x package-install-selected-packages</code></pre>
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># User guide</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>A working reference for your Emacs setup: writing LaTeX papers, taking notes in Org/org-roam, citing from <span class="in">`.bib`</span> files, and reading/annotating PDFs — the same way on macOS and Ubuntu.</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## 1. How it's organized</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">~/.emacs.d/</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">├── early-init.el           # GC tuning + package-system setup (loads before everything)  [NEW]</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="in">├── init.el                 # bootstraps package.el/use-package, requires everything below</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">└── lisp/</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-system.el      # OS settings + shared resolution helpers (loads first)</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-completion.el   # vertico/orderless/marginalia/consult + which-key            [NEW]</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-ui.el           # theme, fonts, visual behavior</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-editing.el      # smartparens, spell-check, wrapping, misc editing</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-org.el          # Org mode + org-cite export config</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-roam.el         # org-roam: notes, dailies, capture templates</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-citations.el    # citar: .bib-based citation completion       [NEW]</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-pdf.el           # pdf-tools + org-noter: read/annotate PDFs   [NEW]</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-latex.el        # AUCTeX + latexmk + pdf-tools preview</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="in">    ├── init-company.el      # in-buffer completion (company-mode)</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="in">    └── init-pandoc.el       # LaTeX → DOCX export for journal submission</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>**Load order matters.** <span class="in">`early-init.el`</span> runs before <span class="in">`package.el`</span> and before the frame is created — it's where GC tuning and <span class="in">`package-enable-at-startup`</span> belong, since setting them later has little effect. <span class="in">`init-system.el`</span> loads first among the <span class="in">`lisp/`</span> modules because it defines helper functions (<span class="in">`my/first-existing-directory`</span>, <span class="in">`my/first-existing-file`</span>, <span class="in">`my/first-executable`</span>) that later modules use to resolve paths and tools at runtime instead of hardcoding one machine's layout. <span class="in">`init-completion.el`</span> loads right after it, before anything that uses <span class="in">`completing-read`</span> (citar, org-roam). <span class="in">`init-citations.el`</span> and <span class="in">`init-pdf.el`</span> load after <span class="in">`init-roam.el`</span> because they both reference <span class="in">`org-roam-directory`</span>.</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## 2. What's new, and why it's worth using</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Citations — `init-citations.el` (citar)</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>Before, there was no way to insert a citation while writing — you'd alt-tab to look up a key or type it from memory. Now:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Command <span class="pp">|</span> Where <span class="pp">|</span> What it does <span class="pp">|</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------|------------------------|------------------------|</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b b`</span> <span class="pp">|</span> Org or LaTeX buffer <span class="pp">|</span> Search your <span class="in">`.bib`</span> file and insert a citation at point <span class="pp">|</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b o`</span> <span class="pp">|</span> Anywhere <span class="pp">|</span> Open the PDF/file attached to a reference (if you have one linked) <span class="pp">|</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b r`</span> <span class="pp">|</span> Anywhere <span class="pp">|</span> Open your notes on a reference <span class="pp">|</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b i`</span> <span class="pp">|</span> Org buffer <span class="pp">|</span> <span class="in">`org-cite-insert`</span> (the native Org citation UI, if you prefer it to citar's) <span class="pp">|</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>It works identically whether you're in a <span class="in">`.org`</span> file (via <span class="in">`org-cite`</span>, Org's built-in citation system since 9.5) or a <span class="in">`.tex`</span> file (via AUCTeX). One <span class="in">`.bib`</span> file, one keybinding, both formats.</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### PDF reading and annotation — `init-pdf.el` (pdf-tools + org-noter)</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="in">`init-ui.el`</span> already had a hook disabling line numbers in <span class="in">`pdf-view-mode`</span> — implying PDF viewing was planned but the package itself was never wired in. Now it is:</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**pdf-tools** replaces the built-in DocView. Real text selection, real search, annotations, much faster rendering.</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**org-noter** lets you open a PDF and an Org notes buffer side by side — your notes stay synced to the page you're reading, and they live in your org-roam directory, so literature notes are searchable alongside everything else.</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Installation is deferred (<span class="in">`pdf-loader-install`</span>) until you actually open a PDF, so it doesn't slow down startup.</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### LaTeX preview via pdf-tools, not a separate app</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="in">`init-latex.el`</span> used to branch on OS: Skim on macOS, Evince on Ubuntu, both hardcoded paths. It now uses pdf-tools itself as the preview target (<span class="in">`TeX-view-program-selection '((output-pdf "PDF Tools"))`</span>), so:</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Compiling with <span class="in">`C-c C-c`</span> → <span class="in">`LatexMk`</span> opens/updates the PDF **inside Emacs**, in the same viewer you use for reading papers.</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>SyncTeX (<span class="in">`C-c C-v`</span> for forward search, click-to-jump for inverse search) works through pdf-tools instead of an external app's own SyncTeX support.</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No dependency on Skim or Evince being installed at all, on either OS. (A fallback to a discovered external viewer only kicks in if you're running Emacs without a graphical frame, e.g. over SSH.)</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cross-platform path/tool resolution — `init-system.el`</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>Three helper functions, used throughout the rest of the config instead of hardcoded single paths:</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="in">``` elisp</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a><span class="in">(my/first-existing-directory "~/MEGA/org" "~/Org" "~/org")</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="in">(my/first-existing-file "~/MEGA/bibliography/references.bib" ...)</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="in">(my/first-executable "aspell" "hunspell" "ispell")</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>Each tries its candidates in order and returns the first one that actually exists on *this* machine. This is what makes the same <span class="in">`init.el`</span> work on both your macOS and Ubuntu installs without editing it per-machine — see §5 if you need to add a new candidate path.</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### Minibuffer completion &amp; discoverability — `init-completion.el`</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>The single biggest day-to-day usability upgrade in this config. Before, citar's citation search, <span class="in">`org-roam-node-find`</span>, and <span class="in">`M-x`</span> all went through Emacs' plain default minibuffer — exact prefix matching, no previews, no annotations.</span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**vertico** — vertical, incremental completion UI for every minibuffer prompt.</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**orderless** — match candidates in any word order (e.g. typing <span class="in">`smith 2020`</span> finds "Smith, J. (2020) ..." in a citation search regardless of which word you typed first). This is what makes searching a large <span class="in">`.bib`</span> file or a roam vault actually fast.</span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**marginalia** — rich inline annotations (docstrings next to <span class="in">`M-x`</span> commands, file sizes/dates next to <span class="in">`find-file`</span> candidates).</span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**consult** — a set of drop-in replacement commands with live preview (buffer switching, in-buffer search, jumping to headings).</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**which-key** — pops up available keybindings automatically when you pause after a prefix key like <span class="in">`C-c b`</span> or <span class="in">`C-c n`</span>, so you don't need to keep this handbook open to remember them.</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="fu">### Faster, cleaner startup — `early-init.el`</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>Moved <span class="in">`gc-cons-threshold`</span> and <span class="in">`package-enable-at-startup`</span> out of <span class="in">`init.el`</span> and into a new <span class="in">`early-init.el`</span>, which Emacs (27+) loads before <span class="in">`package.el`</span> runs its own automatic setup and before the frame is created. Setting <span class="in">`package-enable-at-startup`</span> inside <span class="in">`init.el`</span> (where it lived before) had essentially no effect, since Emacs had already acted on it by the time <span class="in">`init.el`</span> loaded — <span class="in">`early-init.el`</span> is the only place it actually does anything. The GC threshold is set very high during startup here, then brought back down to a sane runtime value (50MB) once <span class="in">`emacs-startup-hook`</span> fires, from <span class="in">`init.el`</span>.</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## 3. Daily workflow keybindings</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="fu">### Writing (LaTeX)</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Key <span class="pp">|</span> Action <span class="pp">|</span></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c C-c`</span> <span class="pp">|</span> Compile (runs <span class="in">`latexmk`</span>, default command) <span class="pp">|</span></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c C-v`</span> <span class="pp">|</span> View/preview PDF, jump to current point (forward search) <span class="pp">|</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b b`</span> <span class="pp">|</span> Insert citation (citar) <span class="pp">|</span></span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c ]`</span> / RefTeX menu <span class="pp">|</span> Insert cross-reference (<span class="in">`turn-on-reftex`</span> is on by default) <span class="pp">|</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="fu">### Notes (Org / org-roam)</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Key <span class="pp">|</span> Action <span class="pp">|</span></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n f`</span> <span class="pp">|</span> Find or create a roam node <span class="pp">|</span></span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n i`</span> <span class="pp">|</span> Insert a link to a roam node <span class="pp">|</span></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n b`</span> <span class="pp">|</span> Toggle the roam backlinks buffer <span class="pp">|</span></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n t`</span> <span class="pp">|</span> Capture a task under a project node <span class="pp">|</span></span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n p`</span> <span class="pp">|</span> Find-or-create a project node <span class="pp">|</span></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n I`</span> <span class="pp">|</span> Insert a node link and finish capture immediately (no extra prompts) <span class="pp">|</span></span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c n d`</span> <span class="pp">|</span> Dailies keymap (e.g. <span class="in">`C-c n d Y`</span> = yesterday's daily note, <span class="in">`T`</span> = tomorrow's) <span class="pp">|</span></span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b i`</span> <span class="pp">|</span> Insert citation via native <span class="in">`org-cite-insert`</span> <span class="pp">|</span></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reading PDFs</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Key <span class="pp">|</span> Action <span class="pp">|</span></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`j`</span> / <span class="in">`k`</span> <span class="pp">|</span> Next/previous line-or-page <span class="pp">|</span></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`h`</span> / <span class="in">`l`</span> <span class="pp">|</span> Previous/next page <span class="pp">|</span></span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c b o`</span> <span class="pp">|</span> Open the PDF linked to a reference (citar) <span class="pp">|</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> org-noter (once launched on a PDF) <span class="pp">|</span> Notes buffer stays synced to your position in the PDF <span class="pp">|</span></span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a><span class="fu">### Navigation &amp; search (consult / which-key)</span></span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Key <span class="pp">|</span> Action <span class="pp">|</span></span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-x b`</span> <span class="pp">|</span> <span class="in">`consult-buffer`</span> — switch buffers/recent files/bookmarks with live preview <span class="pp">|</span></span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c s l`</span> <span class="pp">|</span> <span class="in">`consult-line`</span> — fuzzy search current buffer <span class="pp">|</span></span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c s r`</span> <span class="pp">|</span> <span class="in">`consult-ripgrep`</span> — project-wide search (needs <span class="in">`ripgrep`</span> installed separately) <span class="pp">|</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c s o`</span> <span class="pp">|</span> <span class="in">`consult-outline`</span> — jump to a heading/section in the current buffer <span class="pp">|</span></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c s h`</span> <span class="pp">|</span> <span class="in">`consult-org-heading`</span> — jump to any heading in the current Org file <span class="pp">|</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`M-y`</span> <span class="pp">|</span> <span class="in">`consult-yank-pop`</span> — browse kill-ring with preview <span class="pp">|</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> *(pause after any `C-c` prefix)* <span class="pp">|</span> which-key shows what's available — use this instead of memorizing the tables above <span class="pp">|</span></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a><span class="fu">### Converting to DOCX for journal submission</span></span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Key <span class="pp">|</span> Action <span class="pp">|</span></span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c p p`</span> <span class="pp">|</span> Pandoc menu (pick basic/citations/journal/open) <span class="pp">|</span></span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c p d`</span> <span class="pp">|</span> Basic TeX → DOCX <span class="pp">|</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c p c`</span> <span class="pp">|</span> TeX → DOCX with citations (<span class="in">`--citeproc`</span>, auto-finds a <span class="in">`.bib`</span> in the project) <span class="pp">|</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c p j`</span> <span class="pp">|</span> Journal version: citations + numbered sections + a <span class="in">`reference.docx`</span> template if one exists in the project folder <span class="pp">|</span></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`C-c p o`</span> <span class="pp">|</span> Open the generated DOCX <span class="pp">|</span></span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## 4. Maintenance checklist</span></span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a>Run these occasionally, not just when something breaks:</span>
+<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`M-x package-install-selected-packages`** — reinstalls anything <span class="in">`use-package :ensure t`</span> expects but doesn't currently have. Cheap insurance after an interrupted first-run install (see §6).</span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`M-x package-refresh-contents`** then **`M-x package-list-packages`**, <span class="in">`U`</span> then <span class="in">`x`</span> — the normal "update everything" flow. Do this every month or so; AUCTeX, org-roam, and pdf-tools all move.</span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Check `*Messages*` (`C-h e`)** after any Emacs restart following a config change — install/compile failures show up there in red, easy to miss otherwise.</span>
+<span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`EMACS_DEBUG=1 emacs`** — turns <span class="in">`debug-on-error`</span> back on for a session, without permanently enabling it (it's off by default in <span class="in">`init-editing.el`</span> now, so ordinary errors don't interrupt writing).</span>
+<span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-158"><a href="#cb7-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## 5. Adding a new machine, or a folder in a different place</span></span>
+<span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-160"><a href="#cb7-160" aria-hidden="true" tabindex="-1"></a>If a third machine mounts your notes/bibliography somewhere else, you don't need to change every file — just add the new path to the relevant candidate list:</span>
+<span id="cb7-161"><a href="#cb7-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-162"><a href="#cb7-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Org notes root**: <span class="in">`my/org-root`</span> in <span class="in">`init-org.el`</span></span>
+<span id="cb7-163"><a href="#cb7-163" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**org-roam notes**: the <span class="in">`org-roam-directory`</span> candidate list in <span class="in">`init-roam.el`</span></span>
+<span id="cb7-164"><a href="#cb7-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bibliography**: <span class="in">`my-bibliography-files`</span> in <span class="in">`init-citations.el`</span></span>
+<span id="cb7-165"><a href="#cb7-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Spell-checker / pandoc / any other tool**: these already resolve from <span class="in">`PATH`</span> automatically via <span class="in">`my/first-executable`</span>, so a new machine just needs the tool installed, no config change.</span>
+<span id="cb7-166"><a href="#cb7-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-167"><a href="#cb7-167" aria-hidden="true" tabindex="-1"></a>Pattern to follow, e.g. adding a new Org root candidate:</span>
+<span id="cb7-168"><a href="#cb7-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-169"><a href="#cb7-169" aria-hidden="true" tabindex="-1"></a><span class="in">``` elisp</span></span>
+<span id="cb7-170"><a href="#cb7-170" aria-hidden="true" tabindex="-1"></a><span class="in">(defvar my/org-root</span></span>
+<span id="cb7-171"><a href="#cb7-171" aria-hidden="true" tabindex="-1"></a><span class="in">  (or (my/first-existing-directory "~/MEGA/org" "~/Org" "~/org" "~/NewPath/org")</span></span>
+<span id="cb7-172"><a href="#cb7-172" aria-hidden="true" tabindex="-1"></a><span class="in">      (expand-file-name "org" user-emacs-directory))</span></span>
+<span id="cb7-173"><a href="#cb7-173" aria-hidden="true" tabindex="-1"></a><span class="in">  "Root directory for Org notes.")</span></span>
+<span id="cb7-174"><a href="#cb7-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-175"><a href="#cb7-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-176"><a href="#cb7-176" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-177"><a href="#cb7-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-178"><a href="#cb7-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## 6. Troubleshooting</span></span>
+<span id="cb7-179"><a href="#cb7-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-180"><a href="#cb7-180" aria-hidden="true" tabindex="-1"></a>**Emacs seems frozen on first launch after a config change.** Almost always package installation/compilation, not a real hang — <span class="in">`use-package :ensure t`</span> pulls in a lot at once (AUCTeX especially is slow to compile). Give it a few minutes. If you must confirm it's alive rather than stuck: open a terminal, <span class="in">`top`</span>/<span class="in">`htop`</span>, check whether the <span class="in">`emacs`</span> process is using CPU (busy = probably fine) or sitting near 0% (possibly actually blocked, e.g. on network).</span>
+<span id="cb7-181"><a href="#cb7-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-182"><a href="#cb7-182" aria-hidden="true" tabindex="-1"></a>**Theme looks wrong / lost your colors after an interrupted startup.** <span class="in">`init-ui.el`</span> silently falls back to the built-in <span class="in">`wombat`</span> theme if <span class="in">`doom-one`</span> fails to load (e.g. <span class="in">`doom-themes`</span> wasn't fully installed). Check with:</span>
+<span id="cb7-183"><a href="#cb7-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-184"><a href="#cb7-184" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb7-185"><a href="#cb7-185" aria-hidden="true" tabindex="-1"></a><span class="in">M-x package-installed-p RET doom-themes RET</span></span>
+<span id="cb7-186"><a href="#cb7-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-187"><a href="#cb7-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-188"><a href="#cb7-188" aria-hidden="true" tabindex="-1"></a>If <span class="in">`nil`</span>: <span class="in">`M-x package-refresh-contents`</span>, then <span class="in">`M-x package-install RET doom-themes RET`</span>, then <span class="in">`M-x load-theme RET doom-one RET`</span>.</span>
+<span id="cb7-189"><a href="#cb7-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-190"><a href="#cb7-190" aria-hidden="true" tabindex="-1"></a>**`package-refresh-contents` or an install hangs specifically.** Likely a network/proxy/DNS issue reaching MELPA from that machine, not an Emacs problem. Test from a terminal: <span class="in">`curl -I https://melpa.org/packages/`</span>. If that also hangs or fails, the fix is on the network side, not in <span class="in">`init.el`</span>.</span>
+<span id="cb7-191"><a href="#cb7-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-192"><a href="#cb7-192" aria-hidden="true" tabindex="-1"></a>**AUCTeX completion (labels/citations/macros) doesn't seem to work in `.tex` files.** This was an actual bug we fixed: <span class="in">`init-company.el`</span> used to have the generic completion backends silently override the LaTeX-specific ones due to <span class="in">`add-hook`</span> ordering. If you still see this, confirm you're on the current <span class="in">`init-company.el`</span> (the LaTeX-specific dolist should *not* include <span class="in">`LaTeX-mode-hook`</span>).</span>
+<span id="cb7-193"><a href="#cb7-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-194"><a href="#cb7-194" aria-hidden="true" tabindex="-1"></a>**A `.bib` file, org-roam folder, or PDF viewer doesn't behave as expected on a given machine.** Check what actually resolved: <span class="in">`M-x eval-expression RET my-bibliography-files`</span> or <span class="in">`org-roam-directory`</span> will show you the path that was picked. If it's the fallback rather than what you expected, your synced folder likely isn't mounted where the candidate list expects — see §5.</span>
+<span id="cb7-195"><a href="#cb7-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-196"><a href="#cb7-196" aria-hidden="true" tabindex="-1"></a>**A wave of `Failed to install X: .../compat-VERSION.tar: Not found` errors, followed by `Cannot load X` for several unrelated packages at once.** Not several separate bugs — one shared dependency. <span class="in">`compat`</span> is a small library that vertico, orderless, marginalia, consult, org-appear, citar, and org-noter all rely on. If your local package index still points at a <span class="in">`compat`</span> version that's since been pruned from GNU ELPA, every package that needs it fails at the same download step, and everything downstream cascades into "Cannot load." Fix:</span>
+<span id="cb7-197"><a href="#cb7-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-198"><a href="#cb7-198" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb7-199"><a href="#cb7-199" aria-hidden="true" tabindex="-1"></a><span class="in">M-x package-refresh-contents</span></span>
+<span id="cb7-200"><a href="#cb7-200" aria-hidden="true" tabindex="-1"></a><span class="in">M-x package-install RET compat RET</span></span>
+<span id="cb7-201"><a href="#cb7-201" aria-hidden="true" tabindex="-1"></a><span class="in">M-x package-install-selected-packages</span></span>
+<span id="cb7-202"><a href="#cb7-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-203"><a href="#cb7-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-204"><a href="#cb7-204" aria-hidden="true" tabindex="-1"></a>Then restart Emacs. If the refresh doesn't actually pick up a new index (some setups cache more aggressively), force it from a terminal first:</span>
+<span id="cb7-205"><a href="#cb7-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-206"><a href="#cb7-206" aria-hidden="true" tabindex="-1"></a><span class="in">``` bash</span></span>
+<span id="cb7-207"><a href="#cb7-207" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/.emacs.d/elpa/archives/gnu/archive-contents</span>
+<span id="cb7-208"><a href="#cb7-208" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/.emacs.d/elpa/archives/melpa/archive-contents</span>
+<span id="cb7-209"><a href="#cb7-209" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> ~/.emacs.d/elpa/archives/nongnu/archive-contents</span>
+<span id="cb7-210"><a href="#cb7-210" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-211"><a href="#cb7-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-212"><a href="#cb7-212" aria-hidden="true" tabindex="-1"></a>then relaunch Emacs and refresh again.</span>
+<span id="cb7-213"><a href="#cb7-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-214"><a href="#cb7-214" aria-hidden="true" tabindex="-1"></a>**`Cannot load org-noter` (or any single package) with no obvious cause.** Before assuming it's specific to that package, check <span class="in">`*Messages*`</span> (<span class="in">`C-h e`</span>) for the *first* error in the sequence, not just the last line — <span class="in">`use-package`</span> often prints a whole chain of failures and the useful one (a missing dependency, a stale archive URL, a network timeout) is usually earlier than the "Cannot load" line itself, which is just the final symptom.</span>
+<span id="cb7-215"><a href="#cb7-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-216"><a href="#cb7-216" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb7-217"><a href="#cb7-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-218"><a href="#cb7-218" aria-hidden="true" tabindex="-1"></a><span class="fu">## 7. What each module owns (quick lookup)</span></span>
+<span id="cb7-219"><a href="#cb7-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-220"><a href="#cb7-220" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Module <span class="pp">|</span> Owns <span class="pp">|</span></span>
+<span id="cb7-221"><a href="#cb7-221" aria-hidden="true" tabindex="-1"></a><span class="pp">|------------------------------------|------------------------------------|</span></span>
+<span id="cb7-222"><a href="#cb7-222" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`early-init.el`</span> <span class="pp">|</span> GC tuning during startup, <span class="in">`package-enable-at-startup`</span>, pre-frame settings <span class="pp">|</span></span>
+<span id="cb7-223"><a href="#cb7-223" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-system.el`</span> <span class="pp">|</span> OS branching, PATH, <span class="in">`exec-path-from-shell`</span>, resolution helpers <span class="pp">|</span></span>
+<span id="cb7-224"><a href="#cb7-224" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-completion.el`</span> <span class="pp">|</span> vertico, orderless, marginalia, consult, which-key <span class="pp">|</span></span>
+<span id="cb7-225"><a href="#cb7-225" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-ui.el`</span> <span class="pp">|</span> Theme, fonts, emoji, line numbers, scrolling, frame chrome <span class="pp">|</span></span>
+<span id="cb7-226"><a href="#cb7-226" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-editing.el`</span> <span class="pp">|</span> smartparens, rainbow-delimiters, wrapping, spell-check, <span class="in">`debug-on-error`</span> <span class="pp">|</span></span>
+<span id="cb7-227"><a href="#cb7-227" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-org.el`</span> <span class="pp">|</span> Org core behavior, TODO states, <span class="in">`org-cite`</span> export processors, <span class="in">`my/org-root`</span> <span class="pp">|</span></span>
+<span id="cb7-228"><a href="#cb7-228" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-roam.el`</span> <span class="pp">|</span> org-roam directory/capture templates/dailies <span class="pp">|</span></span>
+<span id="cb7-229"><a href="#cb7-229" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-citations.el`</span> <span class="pp">|</span> citar, <span class="in">`.bib`</span> resolution, citation keybindings <span class="pp">|</span></span>
+<span id="cb7-230"><a href="#cb7-230" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-pdf.el`</span> <span class="pp">|</span> pdf-tools, org-noter <span class="pp">|</span></span>
+<span id="cb7-231"><a href="#cb7-231" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-latex.el`</span> <span class="pp">|</span> AUCTeX, latexmk, RefTeX, PDF preview target <span class="pp">|</span></span>
+<span id="cb7-232"><a href="#cb7-232" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-company.el`</span> <span class="pp">|</span> Completion backends (generic + LaTeX-specific) <span class="pp">|</span></span>
+<span id="cb7-233"><a href="#cb7-233" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`init-pandoc.el`</span> <span class="pp">|</span> TeX → DOCX conversion for journal submission <span class="pp">|</span></span>
+<span id="cb7-234"><a href="#cb7-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-235"><a href="#cb7-235" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
