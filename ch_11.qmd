@@ -14,6 +14,13 @@ $pdflatex= 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';
 
 # Continous compiling
 $preview_continuous_mode=1;
+
+# Nomenclature (nomencl package): .nlo -> .nls
+add_cus_dep('nlo', 'nls', 0, 'makenlo2nls');
+sub makenlo2nls {
+    system("makeindex -s nomencl.ist -o \"$_[0].nls\" \"$_[0].nlo\"");
+}
+push @generated_exts, 'nlo', 'nls', 'nlg';
 ```
 
 - The following .latexmkrc works perfectly with Ubuntu OS while using evince as a pdf reader
@@ -38,4 +45,11 @@ $pdf_previewer = 'evince';
 
 # Common auxiliary files to clean
 $clean_ext = 'acn acr alg aux bbl bcf blg fdb_latexmk fls glg glo gls idx ilg ind ist lof log lot out run.xml synctex.gz toc';
+
+# Nomenclature (nomencl package): .nlo -> .nls
+add_cus_dep('nlo', 'nls', 0, 'makenlo2nls');
+sub makenlo2nls {
+    system("makeindex -s nomencl.ist -o \"$_[0].nls\" \"$_[0].nlo\"");
+}
+push @generated_exts, 'nlo', 'nls', 'nlg';
 ```

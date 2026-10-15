@@ -32,6 +32,7 @@ book:
       chapters:
         - ch_9.qmd
         - ch_10.qmd
+        - ch_11.qmd
         
     - part: "User Guide"
       chapters:

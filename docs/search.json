@@ -216,5 +216,16 @@
       "User Guide",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>User guide</span>"
     ]
+  },
+  {
+    "objectID": "ch_11.html",
+    "href": "ch_11.html",
+    "title": "11  latexmkrc",
+    "section": "",
+    "text": "Place .latexmkrc in ~/.latexmkrc\n# Generate pdf using pdflatex (-pdf)\n$pdf_mode=1;\n\n# Use bibtex if a .bib file exists\n$bibtex_use=1;\n\n# Define command to compile with pdfsync support and nonstopmode\n$pdflatex= 'pdflatex -synctex=1 --interaction=nonstopmode -file-line-error';\n\n# Continous compiling\n$preview_continuous_mode=1;\n\n# Nomenclature (nomencl package): .nlo -&gt; .nls\nadd_cus_dep('nlo', 'nls', 0, 'makenlo2nls');\nsub makenlo2nls {\n    system(\"makeindex -s nomencl.ist -o \\\"$_[0].nls\\\" \\\"$_[0].nlo\\\"\");\n}\npush @generated_exts, 'nlo', 'nls', 'nlg';\n\nThe following .latexmkrc works perfectly with Ubuntu OS while using evince as a pdf reader\n\n# ~/.latexmkrc\n\n# Generate PDF\n$pdf_mode = 1;\n\n# Use BibTeX when needed\n$bibtex_use = 1;\n\n# pdflatex command\n$pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode -file-line-error %S';\n\n# Continuous compilation (effective when latexmk is run with -pvc)\n$preview_continuous_mode = 1;\n\n# PDF viewer\n$pdf_previewer = 'evince';\n\n# Common auxiliary files to clean\n$clean_ext = 'acn acr alg aux bbl bcf blg fdb_latexmk fls glg glo gls idx ilg ind ist lof log lot out run.xml synctex.gz toc';\n\n# Nomenclature (nomencl package): .nlo -&gt; .nls\nadd_cus_dep('nlo', 'nls', 0, 'makenlo2nls');\nsub makenlo2nls {\n    system(\"makeindex -s nomencl.ist -o \\\"$_[0].nls\\\" \\\"$_[0].nlo\\\"\");\n}\npush @generated_exts, 'nlo', 'nls', 'nlg';",
+    "crumbs": [
+      "Advanced Workflow",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>latexmkrc</span>"
+    ]
   }
 ]
